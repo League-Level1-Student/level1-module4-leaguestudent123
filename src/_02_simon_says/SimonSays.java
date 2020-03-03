@@ -27,7 +27,7 @@ public class SimonSays extends KeyAdapter {
 	private int tries = 0;
 	private boolean simonSays = false;
 	Date timeAtStart;
-
+int points=0;
 	// Complete steps 1 - 7 before you test
 	// 1. Declare a JFrame variable
 	JFrame frame=new JFrame();
@@ -49,16 +49,24 @@ public class SimonSays extends KeyAdapter {
 
 	public void keyPressed(KeyEvent e) {
 		// 15. Make a points variable to track the score.
-
+		
+		
 		// 16. If the keyCode matches the imageIndex and "Simon says"
+if (simonSays==true&&imageIndex==e.getKeyCode()) {
+	points+=1;
 
 		// 17. Increase the value of score
 
 		// 18. Use the speak method to tell the user they were correct
-
+	JOptionPane.showMessageDialog(null, "RIGHT");
+}
 		// 19. If the keyCode doesn't match the imageIndex and "Simon didn't
 		// say..."
-
+if (simonSays==false&&imageIndex!=e.getKeyCode()) {
+	points+=1;
+	
+	JOptionPane.showMessageDialog(null, "Simon didnt say that, but I'll give it a point");
+}
 		// 20. Increase the value of score
 
 		// 21. Use the speak method to tell the user they were correct
@@ -94,10 +102,19 @@ public class SimonSays extends KeyAdapter {
 		// 11. Add a key listener to the frame
 		frame.addKeyListener(this);
 		// 12. Create a new instance of Random
-	
+	Random random= new Random();
 		// 13. Use the Random and the speak method to either say
 		// "Simon says press this key" or "Press this key"
-
+	
+	simonSays=random.nextBoolean();
+	if (simonSays==true) {
+		
+	
+	JOptionPane.showMessageDialog(null, "Simon says press this key");
+	}else {
+		
+		JOptionPane.showMessageDialog(null, " press this key");
+	}
 		// 14. Above, set the value of simonSays to true/false appropriately
 
 	}
