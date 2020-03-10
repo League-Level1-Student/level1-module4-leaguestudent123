@@ -34,9 +34,9 @@ int points=0;
 	public void run() {
 		// 2. Add the four images that match keyboard keys like this:
 		images.put(new Integer(KeyEvent.VK_UP), "up.jpg");
-		images.put(new Integer(KeyEvent.VK_UP), "down.jpg");
-		images.put(new Integer(KeyEvent.VK_UP), "right.jpg");
-		images.put(new Integer(KeyEvent.VK_UP), "left.jpg");
+		images.put(new Integer(KeyEvent.VK_DOWN), "down.jpg");
+		images.put(new Integer(KeyEvent.VK_RIGHT), "right.jpg");
+		images.put(new Integer(KeyEvent.VK_LEFT), "left.jpg");
 		// 3. Use a JOptionPane to tell the user the rules: "Press the matching
 		// key when
 		// 'Simon says' otherwise press a different key"
@@ -58,35 +58,41 @@ if (simonSays==true&&imageIndex==e.getKeyCode()) {
 		// 17. Increase the value of score
 
 		// 18. Use the speak method to tell the user they were correct
-	JOptionPane.showMessageDialog(null, "RIGHT");
+speak( "RIGHT");
 }
 		// 19. If the keyCode doesn't match the imageIndex and "Simon didn't
 		// say..."
 if (simonSays==false&&imageIndex!=e.getKeyCode()) {
 	points+=1;
 	
-	JOptionPane.showMessageDialog(null, "Simon didnt say that, but I'll give it a point");
+	speak("Simon didn't say that, but I'll give it a point");
 }
 		// 20. Increase the value of score
-
+	
 		// 21. Use the speak method to tell the user they were correct
-
+	
 		// 22. Increment tries by 1
-
+			tries+=1;
+		
 		// 25. If tries is greater than 9 (or however many you want)...
-
+			if (tries>=9) {
+				
+				JOptionPane.showMessageDialog(null,"your scored "+points);
+					System.exit(0);
+			}
 		// 26. Tell the user their score
 
 		// 27. Exit the program
-
+		
 		// 23. Dispose of the frame
-
+			frame.dispose();
 		// 24. Call the showImage method to show a new image
+			showImage();
 	}
 
 	private void showImage() {
 		// 5. Initialize your frame to a new JFrame()
-		
+		frame=new JFrame();
 		// 6. Set the frame to visible
 		frame.setVisible(true);
 		// 7. Uncomment the following line to add a random image to your frame
@@ -110,10 +116,10 @@ if (simonSays==false&&imageIndex!=e.getKeyCode()) {
 	if (simonSays==true) {
 		
 	
-	JOptionPane.showMessageDialog(null, "Simon says press this key");
+	speak( "Simon says press this key");
 	}else {
 		
-		JOptionPane.showMessageDialog(null, " press this key");
+		speak( " press this key");
 	}
 		// 14. Above, set the value of simonSays to true/false appropriately
 
